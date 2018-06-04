@@ -1,10 +1,12 @@
 <template>
 <b-card style="max-width: 20rem;" border-variant="primary" header-border-variant="primary" header-text-variant="white" align="center">
                 <div slot="header">
-                    <router-link :to="{ name: 'Room', params: { sector: sector, room: room.name } }">
-                    <h5><b>{{ room.name }}</b> - {{ room.patient.firstname }} {{ room.patient.lastname }} 
-                    <br/> {{ room.patient.sex | patientsex }} - {{ room.patient.birthdate | ageinyears }}</h5>
-                    </router-link>
+                <router-link :to="{ name: 'Room', params: { sector: sector, room: room.name } }">
+                    <b-row><b-col>
+                        <h5><b>{{ room.name }}</b> - {{ room.patient.firstname }} {{ room.patient.lastname }} 
+                        <br/> {{ room.patient.sex | patientsex }} - {{ room.patient.birthdate | ageinyears }}</h5>
+                    </b-col></b-row>
+                </router-link>
                 </div>
                 <b-card-body>
                     <b-row no-gutters>
@@ -16,7 +18,7 @@
                         <ul>
                             <b-row v-if="room.occupied" style="color:red"><b-col class="fas fa-heartbeat fa-lg"></b-col></b-row>
                             <b-row v-else style="color:black"><b-col class="fas fa-heartbeat fa-lg"></b-col></b-row>
-                                <b-row  v-if="room.occupied" v-for="sig in room.available_signals" v-bind:key="sig.id" :style="{color: signalConf.types[signalConf.signals[sig].type].color}">
+                                <b-row  v-if="room.occupied" v-for="sig in room.available_signals" v-bind:key="sig.id" :style="{color: signalConf[0].types[signalConf[0].signals[sig].type].color}">
                                     <b-col class="fas fa-xs fa-spin"></b-col><b-col class="patient-signals">{{ sig }}</b-col>
                                 </b-row>
                         </ul>
@@ -99,12 +101,9 @@ export default {
       msg: "Vue par chambre"
     };
   },
-  props: ["room", "sector", "signalConf"],
-  methods: {
-    patientsex: function(value) {
-      return (value = str.replace("H", "Homme"));
-      return (value = str.replace("F", "Femme"));
-    }
+  props: ["room", "sector", "signalConf", "protocoles", "options"],
+  mounted() {
+    this.$root.$emit("update", props);
   },
   filters: {
     moment: function(value) {
@@ -115,6 +114,13 @@ export default {
     },
     ageinyears: function(value) {
       return moment(value).fromNow(true);
+    },
+    patientsex: function(value) {
+      if (value == "H") {
+        return (value = value.replace("H", "Homme"));
+      } else {
+        return (value = value.replace("F", "Femme"));
+      }
     }
   }
 };

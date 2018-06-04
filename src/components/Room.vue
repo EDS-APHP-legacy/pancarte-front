@@ -1,14 +1,19 @@
 <template>
+<b-container fluid>
+
 <div class="grid-stack">
+  <grid-stack-item v-for="signal in sectors.sectors.sector.room.available_signals" v-bind:key="signal.id" :></grid-stack-item>
+    <div class="grid-stack-item" >
+
     <div class="grid-stack-item"
         data-gs-x="0" data-gs-y="0"
         data-gs-width="4" data-gs-height="2">
-            <div class="grid-stack-item-content"></div>
+            <div class="grid-stack-item-content">{{msg}}</div>
     </div>
     <div class="grid-stack-item"
         data-gs-x="4" data-gs-y="0"
         data-gs-width="4" data-gs-height="4">
-            <div class="grid-stack-item-content"></div>
+            <div class="grid-stack-item-content">{{msg}}</div>
     </div>
 </div>
 </template>
@@ -16,19 +21,51 @@
 <script>
 import moment from "moment";
 import gridstack from "gridstack";
+import "gridstack/dist/gridstack.jQueryUI";
+import $ from "jquery";
+import jquery from "jquery";
+import sectors from '../roomsdata.js'
+import signalConf from '../signalsdata.js'
+import protocoles from '../protocoles.js'
+
 moment.locale("fr");
 export default {
   name: "Room",
   data() {
     return {
-      msg: "Vue par chambre"
+      msg: "Vue par chambre",
+      sectors: sectors,
+      sector: '',
+      room: ''
     };
   },
+
+  created() {
+      this.sector = this.$route.params.sector;
+      this.room = this.$route.params.room;
+  },
+
   methods: {
-    patientsex: function(value) {
-      return (value = str.replace("H", "Homme"));
-      return (value = str.replace("F", "Femme"));
+    enableGrid: function() {
+      var options = {
+        cellHeight: 180,
+        verticalMargin: 0,
+        resizable: {
+          handles: "se, s, e, sw, w"
+        },
+        animate: true,
+        removable: true
+      };
+
+      $(".grid-stack").gridstack(options);
     }
+  },
+
+  mounted: function() {
+    this.enableGrid();
+    this.$root.$on("update", props => {
+      console.log(props);
+    });
   },
 
   filters: {

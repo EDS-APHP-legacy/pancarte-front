@@ -9,32 +9,31 @@ import RoomPreview from '@/components/RoomPreview'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Home',
-      components: {
-        default: Home,
-        navbar: Navbar
-      }
-    },
-    {
-      path: '/rooms',
-      name: 'Rooms',
-      components: {
-        default: Rooms,
-        room: Room,
-        navbar: Navbar,
-        RoomPreview: RoomPreview
-      }
-    },
-    {
-      path: '/rooms/:sector/:room',
-      name: 'Room',
-      components: {
-        default: Room,
-        navbar: Navbar
-      }
+  routes: [{
+    path: '/',
+    name: 'Home',
+    components: {
+      default: Home,
+      navbar: Navbar
     }
+  },
+  {
+    path: '/rooms',
+    name: 'Rooms',
+    components: {
+      default: Rooms,
+      room: Room,
+      navbar: Navbar,
+      RoomPreview: RoomPreview
+    }
+  },
+  {
+    path: '/rooms/:sector/:room',
+    name: 'Room',
+    components: {
+      default: Room,
+      navbar: Navbar
+    }
+  }
   ]
 })
