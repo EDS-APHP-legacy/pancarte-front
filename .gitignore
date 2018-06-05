@@ -15,4 +15,10 @@ selenium-debug.log
 *.ntvs*
 *.njsproj
 *.sln
-build/*
+!build/build.js
+!build/logo.png
+!build/utils.js
+!build/vue-loader.conf.js
+!build/webpack.base.conf.js
+!build/webpack.dev.conf.js
+!build/webpack.prod.conf.js
