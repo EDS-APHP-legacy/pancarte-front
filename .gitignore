@@ -15,7 +15,6 @@ selenium-debug.log
 *.ntvs*
 *.njsproj
 *.sln
-build/*
 !build/build.js
 !build/logo.png
 !build/utils.js
