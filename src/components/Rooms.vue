@@ -3,13 +3,13 @@
 <br/>
 <h2><b>{{msg}}</b></h2>
 <br/>
-<b-row flu v-for="sector in sectors.sectors" :key="sector.id" class="sector">
+<b-row flu v-for='sector in sectors' :key='sector.id' class='sector'>
     <b-col>
         <h3>{{sector.name}}</h3>
         <room-preview></room-preview>
         <b-row no-gutters>
-        <b-col v-for="room in sector.rooms" v-bind:key="room.id" class="patient h-100" md="auto">
-          <room-preview :sector="sector.name" :room="room" :signalConf="signalConf.signalConf" :protocoles="protocoles.protocoles" :options="protocoles.options"></room-preview>            
+        <b-col v-for='room in sector.rooms' v-bind:key='room.id' class='patient h-100' md='auto'>
+          <room-preview :sector='sector.name' :room='room' :signalConf='signalConf' :protocoles='protocoles' :options='options'></room-preview>            
         </b-col>
         </b-row>
     </b-col>
@@ -18,27 +18,27 @@
 </template>
 
 <script>
-import moment from "moment";
-import RoomPreview from "./RoomPreview.vue";
-moment.locale("fr");
+import moment from 'moment'
+import RoomPreview from './RoomPreview.vue'
+moment.locale('fr')
 import sectors from '../roomsdata.js'
 import signalConf from '../signalsdata.js'
 import protocoles from '../protocoles.js'
 
 export default {
-  name: "Rooms",
+  name: 'Rooms',
   components: {
     roomPreview: RoomPreview
   },
-  data() {
+  data () {
     return {
-      msg: "Réanimation chirurgicale - Hopital Bicêtre",
-      sectors: sectors,
-      signalConf: signalConf,
-      protocoles: protocoles,
+      msg: 'Réanimation chirurgicale - Hopital Bicêtre',
+      sectors: sectors.sectors,
+      signalConf: signalConf.signalConf,
+      protocoles: protocoles.protocoles
     }
   }
-};
+}
 </script>
 
 <style scoped>

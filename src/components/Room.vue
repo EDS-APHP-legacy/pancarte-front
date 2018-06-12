@@ -1,85 +1,84 @@
 <template>
 <b-container fluid>
-
-<div class="grid-stack">
-  <grid-stack-item v-for="signal in sectors.sectors.sector.room.available_signals" v-bind:key="signal.id" :></grid-stack-item>
-    <div class="grid-stack-item" >
-
-    <div class="grid-stack-item"
-        data-gs-x="0" data-gs-y="0"
-        data-gs-width="4" data-gs-height="2">
-            <div class="grid-stack-item-content">{{msg}}</div>
-    </div>
-    <div class="grid-stack-item"
-        data-gs-x="4" data-gs-y="0"
-        data-gs-width="4" data-gs-height="4">
-            <div class="grid-stack-item-content">{{msg}}</div>
-    </div>
-</div>
+  <b-row><b-col><h3>Secteur : {{sectorName}} - Chambre : {{roomName}}</h3></b-col></b-row>
+  <b-row>
+    <b-col cols='4'><signals-grid :room='room'></signals-grid></b-col>
+    <b-col cols='4'><trends-grid :room='room'></trends-grid></b-col>
+  </b-row>
+</b-container>
 </template>
 
 <script>
-import moment from "moment";
-import gridstack from "gridstack";
-import "gridstack/dist/gridstack.jQueryUI";
-import $ from "jquery";
-import jquery from "jquery";
+import moment from 'moment'
+import 'gridstack/dist/gridstack.jQueryUI'
+import $ from 'jquery'
 import sectors from '../roomsdata.js'
-import signalConf from '../signalsdata.js'
-import protocoles from '../protocoles.js'
+import SignalsGrid from '@/components/SignalsGrid'
+import TrendsGrid from '@/components/TrendsGrid'
 
-moment.locale("fr");
+moment.locale('fr')
 export default {
-  name: "Room",
-  data() {
+  name: 'Room',
+  components: {
+    SignalsGrid: SignalsGrid,
+    TrendsGrid: TrendsGrid
+  },
+  data () {
     return {
-      msg: "Vue par chambre",
-      sectors: sectors,
+      msg: 'Vue par chambre',
+      sectors: sectors.sectors,
+      sectorName: '',
+      roomName: '',
       sector: '',
       room: ''
-    };
+    }
   },
 
-  created() {
-      this.sector = this.$route.params.sector;
-      this.room = this.$route.params.room;
+  created () {
+    this.sectorName = this.$route.params.sector
+    this.roomName = this.$route.params.room
+    var sectorName = this.sectorName
+    var roomName = this.roomName
+    this.sector = this.sectors.find(function (sector) {
+      return sector.name === sectorName
+    })
+    this.room = this.sector.rooms.find(function (room) {
+      return room.name === roomName
+    })
   },
 
   methods: {
-    enableGrid: function() {
+    enableGrid: function () {
       var options = {
         cellHeight: 180,
         verticalMargin: 0,
         resizable: {
-          handles: "se, s, e, sw, w"
+          handles: 'se, s, e, sw, w'
         },
         animate: true,
         removable: true
-      };
+      }
 
-      $(".grid-stack").gridstack(options);
+      $('.grid-stack').gridstack(options)
     }
   },
 
-  mounted: function() {
-    this.enableGrid();
-    this.$root.$on("update", props => {
-      console.log(props);
-    });
+  mounted: function () {
+    this.enableGrid()
   },
 
   filters: {
-    moment: function(value) {
-      return moment(value).format("DD/MM/YY");
+    moment: function (value) {
+      return moment(value).format('DD/MM/YY')
     },
-    sincedays: function(value) {
-      return moment().diff(value, "days");
+    sincedays: function (value) {
+      return moment().diff(value, 'days')
     },
-    ageinyears: function(value) {
-      return moment(value).fromNow(true);
+    ageinyears: function (value) {
+      return moment(value).fromNow(true)
     }
   }
-};
+}
 </script>
 
 <style scoped>

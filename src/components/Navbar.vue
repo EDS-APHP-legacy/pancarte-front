@@ -9,7 +9,7 @@
 
     <b-navbar-nav>
       <b-nav-item><router-link style="color:white" to="/">Accueil</router-link></b-nav-item>
-      <b-nav-item href="#" disabled>Disabled</b-nav-item>
+      <b-nav-item><router-link style="color:white" to="/rooms">Vue générale</router-link></b-nav-item>
     </b-navbar-nav>
 
     <!-- Right aligned nav items -->

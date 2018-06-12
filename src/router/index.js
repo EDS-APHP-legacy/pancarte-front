@@ -5,6 +5,8 @@ import Rooms from '@/components/Rooms'
 import Room from '@/components/Room'
 import Navbar from '@/components/Navbar'
 import RoomPreview from '@/components/RoomPreview'
+import SignalsGrid from '@/components/SignalsGrid'
+import TrendsGrid from '@/components/TrendsGrid'
 
 Vue.use(Router)
 
@@ -32,6 +34,8 @@ export default new Router({
     name: 'Room',
     components: {
       default: Room,
+      SignalsGrid: SignalsGrid,
+      TrendsGrid: TrendsGrid,
       navbar: Navbar
     }
   }
