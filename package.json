@@ -1,7 +1,7 @@
 {
   "name": "pancarte-front",
   "version": "1.0.0",
-  "description": "Front-end for visualizing and annotating medical continuous time-series",
+  "description": "A Vue.js project",
   "author": "Jonas Pochard",
   "private": true,
   "scripts": {
@@ -19,12 +19,9 @@
     "font-awesome": "^4.7.0",
     "gridstack": "^0.4.0",
     "jquery": "^3.3.1",
-    "jquery-ui": "^1.12.1",
-    "lodash": "^4.17.10",
     "moment": "^2.22.2",
-    "node-sass": "^4.9.0",
     "popper.js": "^1.12.9",
-    "sass-loader": "^7.0.2",
+    "smoothie": "^1.35.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },

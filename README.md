@@ -1,6 +1,6 @@
 # pancarte-front
 
-> Front-end for visualizing and annotating medical continuous time-series
+> A Vue.js project
 
 ## Build Setup
 

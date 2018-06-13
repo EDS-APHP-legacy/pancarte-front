@@ -15,13 +15,15 @@ import $ from 'jquery'
 import sectors from '../roomsdata.js'
 import SignalsGrid from '@/components/SignalsGrid'
 import TrendsGrid from '@/components/TrendsGrid'
+import Signal from '@/components/Signal'
 
 moment.locale('fr')
 export default {
   name: 'Room',
   components: {
     SignalsGrid: SignalsGrid,
-    TrendsGrid: TrendsGrid
+    TrendsGrid: TrendsGrid,
+    Signal: Signal
   },
   data () {
     return {
