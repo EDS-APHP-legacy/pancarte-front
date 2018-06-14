@@ -1,12 +1,16 @@
 <template>
-    <canvas id='mycanvas' style='width:100%; height:80%'></canvas>
+    <canvas :id='signal' style='width:100%; height:80%'></canvas>
 </template>
 
 <script>
 import {TimeSeries, SmoothieChart} from 'smoothie'
 export default {
   name: 'Signal',
-  data () {},
+  data () {
+    return {
+      signal: this.signal
+    }
+  },
   props: ['signal'],
   mounted: function () {
     // Data
@@ -32,7 +36,7 @@ export default {
       fillStyle: 'rgba(0, 255, 0, 0.4)',
       lineWidth: 3
     })
-    smoothie.streamTo(document.getElementById('mycanvas'), 1000)
+    smoothie.streamTo(document.getElementById(this.signal), 1000)
   }
 }
 </script>
