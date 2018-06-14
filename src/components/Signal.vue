@@ -1,5 +1,5 @@
 <template>
-    <canvas id='mycanvas' style='width:100%; height:200px'></canvas>
+    <canvas id='mycanvas' style='width:100%; height:80%'></canvas>
 </template>
 
 <script>
@@ -19,13 +19,12 @@ export default {
 
     // Add to SmoothieChart
     var smoothie = new SmoothieChart({
-      reponsive: true,
       grid: {
         strokeStyle: 'rgb(125, 0, 0)',
-        fillStyle: 'rgb(60, 0, 0)',
-        lineWidth: 1,
+        fillStyle: 'rgb(0, 0, 0)',
+        lineWidth: 0,
         millisPerLine: 250,
-        verticalSections: 6
+        verticalSections: 0
       }
     })
     smoothie.addTimeSeries(line1, {
