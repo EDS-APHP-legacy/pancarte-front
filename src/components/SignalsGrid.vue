@@ -4,11 +4,9 @@
         {{msg}}
       </b-row>
       <b-row>
-      <b-col class='grid-stack'>
-          <b-row v-for='signal in room.available_signals' v-bind:key='signal.id' class='grid-stack-item'
-            data-gs-x='0' data-gs-y='0'
-            data-gs-width='12' data-gs-height='1'>
-            <div class='grid-stack-item-content'><signal :signal=signal></signal></div>
+      <b-col>
+          <b-row v-for='signal in room.available_signals' v-bind:key='signal.id'>
+            <signal :signal='signal'></signal>
           </b-row>
     </b-col>
     </b-row>
