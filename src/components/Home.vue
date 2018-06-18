@@ -1,89 +1,46 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+<b-container fluid>
+<b-row align-v="center">
+  <b-col cols="4" class="container mt-5">
+        <icon class="image" solid name="eye"></icon>
+              <router-link style="color:white" to="/rooms">
+
+  <div class="overlay_eye">
+    <div class="text">
+      <h2>Temps réel</h2>
+      <ul>Signaux haute-fréquence</ul>
+      <ul>Indices dérivés</ul>
+      <ul>Annotation</ul>
+      <ul>Pancarte</ul>
+    </div>
   </div>
+    </router-link>
+
+  </b-col>
+  <b-col cols="4" class="container mt-5">
+        <icon class="image" solid name="edit"></icon>
+                      <router-link style="color:white" to="/editing">
+
+  <div class="overlay_edit">
+    <div class="text">
+            <h2>Edition</h2>
+
+    <b-list-group flush>
+      <ul>Recherche de signaux</ul>
+      <ul>Annotation a posteriori</ul>
+      <ul>Exportation de données</ul>
+    </b-list-group>
+    </div>
+  </div>
+  </router-link>
+  </b-col>
+</b-row>  
+</b-container>
 </template>
 
 <script>
+import 'vue-awesome/icons/edit'
+import 'vue-awesome/icons/eye'
 export default {
   name: 'HelloWorld',
   data () {
@@ -97,11 +54,13 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1, h2 {
-  font-weight: normal;
+  font-weight: bold;
+  margin-bottom: 0.5em;
 }
 ul {
   list-style-type: none;
   padding: 0;
+  text-align: left;
 }
 li {
   display: inline-block;
@@ -110,31 +69,59 @@ li {
 a {
   color: #42b983;
 }
-</style>
 
-  name: 'HelloWorld',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
 }
-</script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
+.overlay_edit {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: black;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+.overlay_eye {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: .3s ease;
+  background-color: black;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+
+.container:hover .overlay_edit {
+  opacity: 0.75;
 }
-a {
-  color: #42b983;
+
+.container:hover .overlay_eye {
+  opacity: 0.75;
 }
+
+.text {
+  border: 1px;
+  color: white;
+  background: transparent;
+  font-size: 1.4em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
 </style>

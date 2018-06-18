@@ -8,9 +8,11 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'gridstack/dist/gridstack.min.css'
 import 'font-awesome/css/font-awesome.css'
+import Icon from 'vue-awesome/components/Icon'
 
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
+Vue.component('icon', Icon)
 
 /* eslint-disable no-new */
 new Vue({

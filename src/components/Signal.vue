@@ -8,7 +8,6 @@ export default {
   name: 'Signal',
   data () {
     return {
-      signal: this.signal
     }
   },
   props: ['signal'],
@@ -24,7 +23,7 @@ export default {
     // Add to SmoothieChart
     var smoothie = new SmoothieChart({
       grid: {
-        strokeStyle: 'rgb(125, 0, 0)',
+        strokeStyle: 'rgb(0, 0, 0)',
         fillStyle: 'rgb(0, 0, 0)',
         lineWidth: 0,
         millisPerLine: 250,
@@ -32,10 +31,12 @@ export default {
       }
     })
     smoothie.addTimeSeries(line1, {
-      strokeStyle: 'rgb(0, 255, 0)',
-      fillStyle: 'rgba(0, 255, 0, 0.4)',
-      lineWidth: 3
-    })
+      strokeStyle: 'rgb(255, 255, 255)',
+      fillStyle: 'rgba(0, 0, 0, 1)',
+      lineWidth: 1
+    },
+    line1.dropOldData(30, 30)
+)
     smoothie.streamTo(document.getElementById(this.signal), 1000)
   }
 }

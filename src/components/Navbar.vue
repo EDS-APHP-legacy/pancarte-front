@@ -12,17 +12,12 @@
     </b-navbar-nav>
   </b-collapse>
 
-  <b-navbar-brand class='abs'><b>{{msg}}</b></b-navbar-brand>
-  <b-navbar-brand>{{datenow}}</b-navbar-brand>
+  <b-navbar-brand class='ml-auto'><b>{{msg}}</b></b-navbar-brand>
+  <b-navbar-brand class='ml-auto'>{{datenow}}</b-navbar-brand>
 
     <!-- Right aligned nav items -->
     <b-collapse is-nav id='nav_collapse'>
     <b-navbar-nav class='ml-auto'>
-
-      <b-nav-form>
-        <b-form-input size='sm' class='mr-sm-2' type='text' placeholder='Search'/>
-        <b-button size='sm' class='my-2 my-sm-0' type='submit'>Search</b-button>
-      </b-nav-form>
 
       <b-nav-item-dropdown text='Langue' right>
         <b-dropdown-item href='#'>EN</b-dropdown-item>
@@ -34,7 +29,7 @@
       <b-nav-item-dropdown right>
         <!-- Using button-content slot -->
         <template slot='button-content'>
-          <em>Utilisateur</em>
+          <em>{{User}}</em>
         </template>
         <b-dropdown-item href='#'>Profil</b-dropdown-item>
         <b-dropdown-item href='#'>Déconnexion</b-dropdown-item>
@@ -54,7 +49,8 @@ export default {
   data () {
     return {
       msg: 'Pancarte Front',
-      datenow: ''
+      datenow: '',
+      User: 'Jonas Pochard'
     }
   },
   methods: {

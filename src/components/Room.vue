@@ -2,8 +2,8 @@
 <b-container fluid>
   <b-row><b-col><h3>Secteur : {{sectorName}} - Chambre : {{roomName}}</h3></b-col></b-row>
   <b-row>
-    <b-col cols='4'><signals-grid :room='room'></signals-grid></b-col>
-    <b-col cols='4'><trends-grid :room='room'></trends-grid></b-col>
+    <b-col cols='4'><signals-grid :room='room' :signalConf='signalConf'></signals-grid></b-col>
+    <b-col cols='4'><trends-grid :room='room' :signalConf='signalConf'></trends-grid></b-col>
   </b-row>
 </b-container>
 </template>
@@ -13,6 +13,7 @@ import moment from 'moment'
 import 'gridstack/dist/gridstack.jQueryUI'
 import $ from 'jquery'
 import sectors from '../roomsdata.js'
+import signalConf from '../signalsdata.js'
 import SignalsGrid from '@/components/SignalsGrid'
 import TrendsGrid from '@/components/TrendsGrid'
 import Signal from '@/components/Signal'
@@ -28,6 +29,7 @@ export default {
   data () {
     return {
       msg: 'Vue par chambre',
+      signalConf: signalConf.signalConf,
       sectors: sectors.sectors,
       sectorName: '',
       roomName: '',

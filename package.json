@@ -14,15 +14,23 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-regular": "^5.0.13",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/vue-fontawesome": "0.0.23",
     "bootstrap": "^4.0.0-beta.2",
     "bootstrap-vue": "latest",
+    "chart.js": "^2.7.2",
     "font-awesome": "^4.7.0",
+    "font-awesome-svg": "^0.4.0",
     "gridstack": "^0.4.0",
     "jquery": "^3.3.1",
     "moment": "^2.22.2",
     "popper.js": "^1.12.9",
     "smoothie": "^1.35.0",
     "vue": "^2.5.2",
+    "vue-awesome": "^2.3.7",
+    "vue-fontawesome": "0.0.2",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
