@@ -8,7 +8,7 @@
           <b-row v-for='signal in room.available_signals' v-bind:key='signal.id' class='grid-stack-item'
             data-gs-x='0' data-gs-y='0'
             data-gs-width='12' data-gs-height='1'>
-            <div class='grid-stack-item-content'>{{signal}}</div>
+            <trend class='grid-stack-item-content' :signal='signal' :signalConf='signalConf'></trend>
           </b-row>
     </b-col>
     </b-row>
@@ -21,6 +21,7 @@ import moment from 'moment'
 moment.locale('fr')
 import 'gridstack/dist/gridstack.jQueryUI'
 import $ from 'jquery'
+import Trend from '@/components/Trend'
 
 export default {
   name: 'TrendsGrid',
@@ -30,6 +31,9 @@ export default {
     }
   },
   props: ['room'],
+  components: {
+    Trend: Trend
+  },
   methods: {
     enableGrid: function () {
       var options = {

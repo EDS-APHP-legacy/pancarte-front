@@ -61,7 +61,7 @@
                             </b-collapse>
                             <b-collapse accordion='myaccordion' id='existingprotocol'>
                                 <br/>
-                                <b-form-select v-model='protocoles' :options='options' class='mb-3' />
+                                <b-form-select v-model='options' :options='options' class='mb-3' />
                             </b-collapse>
                             </b-form-group>
                             <b-form-group>

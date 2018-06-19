@@ -57,7 +57,7 @@ export default {
     time () {
       var self = this
       this.datenow = moment().format('D MMMM YYYY H:mm:ss')
-      setInterval(self.time, 1000)
+      setTimeout(self.time, 1000)
     }
   },
   mounted: function () {

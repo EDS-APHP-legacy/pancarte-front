@@ -3,15 +3,13 @@
   <b-row><b-col><h3>Secteur : {{sectorName}} - Chambre : {{roomName}}</h3></b-col></b-row>
   <b-row>
     <b-col cols='4'><signals-grid :room='room' :signalConf='signalConf'></signals-grid></b-col>
-    <b-col cols='4'><trends-grid :room='room' :signalConf='signalConf'></trends-grid></b-col>
+    <b-col cols='4'><trends-grid :room='room' :signalConf='signalConf' :sectors='sectors'></trends-grid></b-col>
   </b-row>
 </b-container>
 </template>
 
 <script>
 import moment from 'moment'
-import 'gridstack/dist/gridstack.jQueryUI'
-import $ from 'jquery'
 import sectors from '../roomsdata.js'
 import signalConf from '../signalsdata.js'
 import SignalsGrid from '@/components/SignalsGrid'
@@ -49,26 +47,6 @@ export default {
     this.room = this.sector.rooms.find(function (room) {
       return room.name === roomName
     })
-  },
-
-  methods: {
-    enableGrid: function () {
-      var options = {
-        cellHeight: 180,
-        verticalMargin: 0,
-        resizable: {
-          handles: 'se, s, e, sw, w'
-        },
-        animate: true,
-        removable: true
-      }
-
-      $('.grid-stack').gridstack(options)
-    }
-  },
-
-  mounted: function () {
-    this.enableGrid()
   },
 
   filters: {

@@ -35,7 +35,8 @@ export default {
       msg: 'Réanimation chirurgicale - Hopital Bicêtre',
       sectors: sectors.sectors,
       signalConf: signalConf.signalConf,
-      protocoles: protocoles.protocoles
+      protocoles: protocoles.protocoles,
+      options: protocoles.options
     }
   }
 }
