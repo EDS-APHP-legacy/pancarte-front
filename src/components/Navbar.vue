@@ -12,8 +12,8 @@
     </b-navbar-nav>
   </b-collapse>
 
-  <b-navbar-brand class='ml-auto'><b>{{msg}}</b></b-navbar-brand>
-  <b-navbar-brand class='ml-auto'>{{datenow}}</b-navbar-brand>
+  <b-navbar-brand class='ml-auto mt-3'><h2><b>{{msg}}</b></h2></b-navbar-brand>
+  <b-navbar-brand class='ml-auto mt-3'>{{datenow}}</b-navbar-brand>
 
     <!-- Right aligned nav items -->
     <b-collapse is-nav id='nav_collapse'>

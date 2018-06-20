@@ -18,6 +18,7 @@
     "@fortawesome/fontawesome-free-regular": "^5.0.13",
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "@fortawesome/vue-fontawesome": "0.0.23",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "bootstrap": "^4.0.0-beta.2",
     "bootstrap-vue": "latest",
     "chart.js": "^2.7.2",
@@ -30,7 +31,9 @@
     "smoothie": "^1.35.0",
     "vue": "^2.5.2",
     "vue-awesome": "^2.3.7",
+    "vue-chartjs": "^3.3.2",
     "vue-fontawesome": "0.0.2",
+    "vue-nav-tabs": "^0.5.7",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

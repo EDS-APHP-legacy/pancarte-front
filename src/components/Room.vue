@@ -1,11 +1,19 @@
 <template>
-<b-container fluid>
-  <b-row><b-col><h3>Secteur : {{sectorName}} - Chambre : {{roomName}}</h3></b-col></b-row>
+<b-card no-body>
+  <b-card-header><b-col class='mb-3 mt-3'><h3>{{sectorName}} - {{roomName}}</h3></b-col></b-card-header>
+  <b-tabs pills card>
+    <b-tab title='Temps réel' active>
   <b-row>
     <b-col cols='4'><signals-grid :room='room' :signalConf='signalConf'></signals-grid></b-col>
-    <b-col cols='4'><trends-grid :room='room' :signalConf='signalConf' :sectors='sectors'></trends-grid></b-col>
+    <b-col cols='4'><trends-grid :room='room' :signalConf='signalConf'></trends-grid></b-col>
+    <b-col cols='4'><indices-grid :room='room' :signalConf='signalConf'></indices-grid></b-col>
   </b-row>
-</b-container>
+    </b-tab>
+    <b-tab title='Pancarte'>
+      <pancarte-grid></pancarte-grid>
+    </b-tab>
+  </b-tabs>
+</b-card>
 </template>
 
 <script>
@@ -14,15 +22,17 @@ import sectors from '../roomsdata.js'
 import signalConf from '../signalsdata.js'
 import SignalsGrid from '@/components/SignalsGrid'
 import TrendsGrid from '@/components/TrendsGrid'
-import Signal from '@/components/Signal'
+import IndicesGrid from '@/components/IndicesGrid'
+import PancarteGrid from '@/components/PancarteGrid'
 
 moment.locale('fr')
 export default {
   name: 'Room',
   components: {
-    SignalsGrid: SignalsGrid,
-    TrendsGrid: TrendsGrid,
-    Signal: Signal
+    SignalsGrid,
+    TrendsGrid,
+    IndicesGrid,
+    PancarteGrid
   },
   data () {
     return {
@@ -32,7 +42,9 @@ export default {
       sectorName: '',
       roomName: '',
       sector: '',
-      room: ''
+      room: '',
+      nextRoomName: '',
+      index: ''
     }
   },
 
@@ -46,6 +58,10 @@ export default {
     })
     this.room = this.sector.rooms.find(function (room) {
       return room.name === roomName
+    })
+    var index = sectors.indexOf('Hégoa')
+    this.nextRoomName = this.sector.rooms.find(function (room) {
+      return room.name === room.name[index + 1]
     })
   },
 

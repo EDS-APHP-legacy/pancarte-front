@@ -1,14 +1,15 @@
 <template>
     <b-container fluid>
-      <b-row>  
-        {{msg}}
-      </b-row>
+      <b-row class='mt-3'><b-col><h4>{{msg}}</h4></b-col></b-row>
       <b-row>
       <b-col class='grid-stack'>
           <b-row v-for='signal in room.available_signals' v-bind:key='signal.id' class='grid-stack-item'
             data-gs-x='0' data-gs-y='0'
             data-gs-width='12' data-gs-height='1'>
-            <signal class='grid-stack-item-content' :signal='signal' :signalConf='signalConf'></signal>
+            <div class='grid-stack-item-content'>
+              <div><b>{{signal}}</b></div>
+              <signal :signal='signal' :signalConf='signalConf'></signal>
+            </div>
           </b-row>
     </b-col>
     </b-row>

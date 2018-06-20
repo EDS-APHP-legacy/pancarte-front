@@ -1,8 +1,6 @@
 <template>
     <b-container fluid>
-      <b-row>  
-        {{msg}}
-      </b-row>
+      <b-row class='mt-3'><b-col><h4>{{msg}}</h4></b-col></b-row>
       <b-row>
       <b-col class='grid-stack'>
           <b-row v-for='signal in room.available_signals' v-bind:key='signal.id' class='grid-stack-item'
@@ -14,7 +12,6 @@
     </b-row>
     </b-container>
 </template>
-
 
 <script>
 import moment from 'moment'
@@ -30,7 +27,7 @@ export default {
       msg: 'Tendances'
     }
   },
-  props: ['room'],
+  props: ['room', 'signalConf'],
   components: {
     Trend: Trend
   },
