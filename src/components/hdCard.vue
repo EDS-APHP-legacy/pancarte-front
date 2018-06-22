@@ -10,44 +10,10 @@ export default {
       data: {
         datasets: [
           {
-            label: 'Diurèse',
-            backgroundColor: 'green',
-            data: [
-              {
-                x: this.newDate(-24),
-                y: 400
-              },
-              {
-                x: this.newDate(-20),
-                y: 250
-              },
-              {
-                x: this.newDate(-16),
-                y: 320
-              },
-              {
-                x: this.newDate(-12),
-                y: 340
-              },
-              {
-                x: this.newDate(-8),
-                y: 240
-              },
-              {
-                x: this.newDate(-4),
-                y: 160
-              },
-              {
-                x: this.newDate(-0),
-                y: 50
-              }
-            ]
-          },
-          {
-            label: 'Pression artérielle',
-            yaxisID: '2ndAxis',
+            label: 'PAS',
             type: 'line',
             borderColor: 'red',
+            yAxisID: 'PArterielle',
             data: [
               {
                 x: this.newDate(-24),
@@ -78,6 +44,114 @@ export default {
                 y: 138
               }
             ]
+          },
+          {
+            label: 'PAD',
+            type: 'line',
+            borderColor: 'red',
+            yAxisID: 'PArterielle',
+            data: [
+              {
+                x: this.newDate(-24),
+                y: 80
+              },
+              {
+                x: this.newDate(-20),
+                y: 90
+              },
+              {
+                x: this.newDate(-16),
+                y: 95
+              },
+              {
+                x: this.newDate(-12),
+                y: 90
+              },
+              {
+                x: this.newDate(-8),
+                y: 80
+              },
+              {
+                x: this.newDate(-4),
+                y: 75
+              },
+              {
+                x: this.newDate(-0),
+                y: 77
+              }
+            ]
+          },
+          {
+            label: 'PAM',
+            type: 'line',
+            borderColor: 'red',
+            yAxisID: 'PArterielle',
+            data: [
+              {
+                x: this.newDate(-24),
+                y: 100
+              },
+              {
+                x: this.newDate(-20),
+                y: 105
+              },
+              {
+                x: this.newDate(-16),
+                y: 107
+              },
+              {
+                x: this.newDate(-12),
+                y: 104
+              },
+              {
+                x: this.newDate(-8),
+                y: 101
+              },
+              {
+                x: this.newDate(-4),
+                y: 101
+              },
+              {
+                x: this.newDate(-0),
+                y: 99
+              }
+            ]
+          },
+          {
+            label: 'Diurèse',
+            backgroundColor: 'green',
+            type: 'bar',
+            yAxisID: 'Diurese',
+            data: [
+              {
+                x: this.newDate(-24),
+                y: 400
+              },
+              {
+                x: this.newDate(-20),
+                y: 250
+              },
+              {
+                x: this.newDate(-16),
+                y: 320
+              },
+              {
+                x: this.newDate(-12),
+                y: 340
+              },
+              {
+                x: this.newDate(-8),
+                y: 240
+              },
+              {
+                x: this.newDate(-4),
+                y: 160
+              },
+              {
+                x: this.newDate(-0),
+                y: 50
+              }
+            ]
           }
         ]
       },
@@ -98,17 +172,23 @@ export default {
               }
             }],
           yAxes: [{
+            type: 'linear',
+            id: 'Diurese',
+            position: 'left',
             ticks: {
-              beginAtZero: true
-            },
-            stacked: true
+              beginAtZero: true,
+              max: 1000,
+              min: 0
+            }
           },
           {
             type: 'linear',
-            id: '2ndAxis',
-            stacked: true,
+            id: 'PArterielle',
+            position: 'right',
             ticks: {
-              beginAtZero: true
+              beginAtZero: true,
+              max: 200,
+              min: 0
             }
           }],
           legend: {
